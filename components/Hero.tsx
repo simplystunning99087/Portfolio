@@ -3,86 +3,107 @@ import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 md:px-8 py-20">
-      <div className="max-w-4xl mx-auto">
-        <div className="space-y-8">
-          {/* Name & Title */}
-          <div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 text-foreground">
-              Manivel Mughilan
-            </h1>
-            <p className="text-xl md:text-2xl text-accent font-light">
-              AI/ML Engineer & Full-Stack Developer
+    <section className="min-h-screen flex items-center justify-center px-4 md:px-8 py-20 bg-gradient-to-br from-background via-light to-background">
+      <div className="max-w-5xl mx-auto w-full">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text */}
+          <div className="space-y-8">
+            {/* Name & Title */}
+            <div className="space-y-3">
+              <p className="text-accent font-light text-lg">
+                Hello, I&apos;m
+              </p>
+              <h1 className="text-6xl md:text-7xl font-bold text-foreground leading-tight">
+                Manivel Mughilan
+              </h1>
+              <p className="text-2xl md:text-3xl text-secondary font-light">
+                AI/ML Engineer & Full-Stack Developer
+              </p>
+            </div>
+
+            {/* Bio */}
+            <p className="text-base md:text-lg text-secondary leading-relaxed">
+              A passionate individual who thrives to work on end-to-end products which develop sustainable and scalable AI/ML systems and technical solutions to create real-world impact.
             </p>
-          </div>
 
-          {/* Bio */}
-          <p className="text-lg text-secondary max-w-2xl leading-relaxed">
-            Second-year B.Tech student in Cyber Physical Systems at VIT Chennai. I build end-to-end AI systems, from data capture to hardware deployment. Passionate about shipping products that create real-world impact through machine learning and intelligent automation.
-          </p>
-
-          {/* Location & Status */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-secondary text-sm">
-            <div>
-              <span className="text-accent">📍</span> Hosur, Tamil Nadu
+            {/* Location & Status */}
+            <div className="flex flex-col gap-3 text-secondary text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-accent">📍</span>
+                <span>Hosur, Tamil Nadu, India</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-accent">✓</span>
+                <span>Available for virtual & on-site internships</span>
+              </div>
             </div>
-            <div>
-              <span className="text-accent">✓</span> Available for virtual & on-site internships
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <a
+                href="#projects"
+                className="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-accent transition-all duration-300 text-center shadow-lg hover:shadow-xl"
+              >
+                View My Work
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3 border-2 border-primary text-foreground font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-center"
+              >
+                Get in Touch
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex gap-4 pt-8 border-t border-muted">
+              <a
+                href="https://github.com/simplystunning99087"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-muted text-secondary hover:text-accent hover:bg-accent hover:bg-opacity-20 transition-all flex items-center justify-center"
+                title="GitHub"
+              >
+                <Github size={20} />
+              </a>
+              <a
+                href="https://linkedin.com/in/manivel-mughilan-6bb65036a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-muted text-secondary hover:text-accent hover:bg-accent hover:bg-opacity-20 transition-all flex items-center justify-center"
+                title="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a
+                href="mailto:manimeets09@gmail.com"
+                className="w-10 h-10 rounded-full bg-muted text-secondary hover:text-accent hover:bg-accent hover:bg-opacity-20 transition-all flex items-center justify-center"
+                title="Email"
+              >
+                <Mail size={20} />
+              </a>
+              <a
+                href="https://leetcode.com/u/ManCreateCodeDevelop/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-muted text-secondary hover:text-accent hover:bg-accent hover:bg-opacity-20 transition-all flex items-center justify-center"
+                title="LeetCode"
+              >
+                <FileText size={20} />
+              </a>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row gap-4 pt-4">
-            <a
-              href="#projects"
-              className="px-8 py-3 bg-primary text-background font-semibold rounded-lg hover:bg-accent transition-colors duration-200"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-3 border border-secondary text-foreground font-semibold rounded-lg hover:border-accent hover:text-accent transition-colors duration-200"
-            >
-              Get in Touch
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-6 pt-8 border-t border-secondary">
-            <a
-              href="https://github.com/simplystunning99087"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary hover:text-accent transition-colors"
-              title="GitHub"
-            >
-              <Github size={24} />
-            </a>
-            <a
-              href="https://linkedin.com/in/manivel-mughilan-6bb65036a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary hover:text-accent transition-colors"
-              title="LinkedIn"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href="mailto:manimeets09@gmail.com"
-              className="text-secondary hover:text-accent transition-colors"
-              title="Email"
-            >
-              <Mail size={24} />
-            </a>
-            <a
-              href="https://leetcode.com/u/ManCreateCodeDevelop/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary hover:text-accent transition-colors"
-              title="LeetCode"
-            >
-              <FileText size={24} />
-            </a>
+          {/* Right Column - Illustration Placeholder */}
+          <div className="hidden md:flex items-center justify-center">
+            <div className="relative w-full h-96">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-3xl"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">💻</div>
+                  <p className="text-secondary font-light">Building AI-powered Solutions</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

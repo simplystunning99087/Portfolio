@@ -33,37 +33,40 @@ export default function Experience() {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-background">
+    <section id="experience" className="py-24 px-4 md:px-8 bg-light">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-foreground">
+        <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
           Leadership & Community
         </h2>
+        <p className="text-secondary text-lg mb-16">
+          Active contributor and leader in various technical communities at VIT Chennai.
+        </p>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {roles.map((role, idx) => (
             <div
               key={idx}
-              className="border border-secondary rounded-lg p-6 hover:border-accent transition-colors duration-200"
+              className="border border-muted bg-background rounded-xl p-6 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300"
             >
               <div className="flex justify-between items-start mb-2">
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {role.title}
                   </h3>
-                  <p className="text-accent font-medium">{role.organization}</p>
+                  <p className="text-primary font-medium text-sm">{role.organization}</p>
                 </div>
               </div>
               <p className="text-secondary text-sm mb-3">{role.period}</p>
-              <p className="text-secondary">{role.description}</p>
+              <p className="text-secondary text-sm">{role.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 p-8 border border-accent rounded-lg bg-accent/5">
-          <h3 className="text-xl font-semibold text-accent mb-4">
+        <div className="mt-16 p-8 border border-primary/20 bg-gradient-to-br from-accent/5 to-primary/5 rounded-xl">
+          <h3 className="text-xl font-semibold text-foreground mb-4">
             Looking for Opportunities
           </h3>
-          <p className="text-foreground mb-4">
+          <p className="text-secondary mb-4">
             Available for virtual internship immediately (part-time or full-time until July 6, 2026) and open to on-site internships in Chennai.
           </p>
           <p className="text-secondary">

@@ -6,12 +6,12 @@ interface SkillCategoryProps {
 function SkillCategory({ category, skills }: SkillCategoryProps) {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-accent mb-4">{category}</h3>
+      <h3 className="text-lg font-semibold text-primary mb-4">{category}</h3>
       <div className="flex flex-wrap gap-3">
         {skills.map((skill) => (
           <span
             key={skill}
-            className="px-4 py-2 bg-primary/10 text-foreground rounded-lg border border-primary/30 text-sm hover:border-accent hover:text-accent transition-colors"
+            className="px-4 py-2 bg-muted text-foreground rounded-lg border border-accent/20 text-sm hover:border-accent hover:bg-accent/10 hover:text-primary transition-all"
           >
             {skill}
           </span>
@@ -50,13 +50,16 @@ export default function Skills() {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-background">
+    <section className="py-24 px-4 md:px-8 bg-background">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-foreground">
+        <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
           Skills & Expertise
         </h2>
+        <p className="text-secondary text-lg mb-16">
+          A comprehensive set of technologies and domains where I bring practical experience.
+        </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-12">
           {skillCategories.map((category, idx) => (
             <SkillCategory key={idx} {...category} />
           ))}
