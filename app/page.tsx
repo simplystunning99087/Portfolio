@@ -13,7 +13,8 @@ export default function Home() {
   return (
     <main className="bg-background text-foreground">
       <Navigation />
-      <Hero />
+      <div className="pt-16">
+        <Hero />
       <WhatIDo />
       <Projects />
       <Skills />
@@ -22,6 +23,7 @@ export default function Home() {
       <Education />
       <Contact />
       <Footer />
+      </div>
     </main>
   );
 }

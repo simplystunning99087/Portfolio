@@ -8,39 +8,40 @@ export default function About() {
 
         <div className="space-y-6 text-secondary leading-relaxed">
           <p className="text-lg">
-            I&apos;m a second-year B.Tech student studying Cyber Physical Systems at VIT Chennai (CGPA: 8.93/10). My passion lies in building intelligent systems that bridge the gap between software and hardware, with a strong focus on machine learning, computer vision, and autonomous AI agents.
+            I&apos;m a second-year B.Tech student studying Cyber Physical Systems at VIT Chennai (CGPA: 8.93/10). Passionate about building intelligent systems that bridge software and hardware, with expertise in machine learning, computer vision, and autonomous AI agents.
           </p>
 
-          <p className="text-lg">
-            My journey spans across AI/ML pipelines, full-stack web development, embedded systems, and DevOps. I&apos;m particularly excited about:
+          <p className="text-lg font-medium text-foreground">
+            My core competencies span:
           </p>
 
-          <ul className="space-y-3 text-lg">
+          <ul className="space-y-3 text-base">
             <li className="flex gap-3">
-              <span className="text-accent font-bold">→</span>
-              <span><strong>End-to-end AI Systems:</strong> From data collection and preprocessing to model deployment on edge devices</span>
+              <span className="text-primary font-bold">•</span>
+              <span><strong>End-to-end AI Systems:</strong> Data pipelines to edge device deployment</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-accent font-bold">→</span>
-              <span><strong>Computer Vision:</strong> Real-time object detection, classification, and embedded ML on microcontrollers</span>
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Computer Vision:</strong> Real-time detection and embedded ML on microcontrollers</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-accent font-bold">→</span>
-              <span><strong>LLM & RAG Systems:</strong> Building intelligent information retrieval and agent systems</span>
+              <span className="text-primary font-bold">•</span>
+              <span><strong>LLM & RAG Systems:</strong> Intelligent information retrieval and agent systems</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-accent font-bold">→</span>
-              <span><strong>Scalable Web Applications:</strong> Creating responsive, production-ready solutions</span>
+              <span className="text-primary font-bold">•</span>
+              <span><strong>Full-Stack Development:</strong> Responsive, production-ready web applications</span>
             </li>
           </ul>
 
           <p className="text-lg pt-4">
-            I believe in rapid prototyping and shipping products quickly. I&apos;ve delivered enterprise-grade AI systems in sprint timeframes, participated in multiple hackathons, and contributed to open-source initiatives. Currently, I&apos;m seeking internship opportunities to apply these skills in a real-world product environment.
+            I excel at rapid prototyping and delivering enterprise-grade AI systems in sprint timeframes. Multiple hackathon wins and open-source contributions demonstrate my commitment to innovation. Actively seeking internship opportunities to apply these skills in real-world product environments.
           </p>
 
-          <p className="text-lg">
-            <strong>Academic Recognition:</strong> 2nd Place in PYTHONIX (24-hour Hackathon), participation in Shaastra IIT Madras, and multiple technical certifications in AI, ML, and Data Science.
-          </p>
+          <div className="bg-white border border-border rounded-lg p-6 mt-6">
+            <p className="text-foreground font-medium mb-2">Recognition & Achievements:</p>
+            <p className="text-secondary text-sm">2nd Place in PYTHONIX 24-hour Hackathon • Shaastra IIT Madras Participant • AI/ML/Data Science Certifications</p>
+          </div>
         </div>
       </div>
     </section>

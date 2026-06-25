@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#0a0e27" />
+        <meta name="theme-color" content="#faf8f3" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="description" content="Professional portfolio of Manivel Mughilan - AI/ML Engineer & Full-Stack Developer" />
         <link rel="canonical" href="https://manivel-mughilan.vercel.app" />

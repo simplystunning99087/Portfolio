@@ -39,22 +39,21 @@ export default function Experience() {
           Leadership & Community
         </h2>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {roles.map((role, idx) => (
             <div
               key={idx}
-              className="border border-secondary rounded-lg p-6 hover:border-accent transition-colors duration-200"
+              className="bg-white border border-border rounded-lg p-6 hover:shadow-md transition-all duration-200 hover:border-primary"
             >
-              <div className="flex justify-between items-start mb-2">
+              <div className="flex justify-between items-start">
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground">
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
                     {role.title}
                   </h3>
-                  <p className="text-accent font-medium">{role.organization}</p>
+                  <p className="text-primary font-medium text-sm mb-1">{role.organization}</p>
+                  <p className="text-secondary text-sm">{role.period}</p>
                 </div>
               </div>
-              <p className="text-secondary text-sm mb-3">{role.period}</p>
-              <p className="text-secondary">{role.description}</p>
             </div>
           ))}
         </div>

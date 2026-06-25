@@ -53,13 +53,13 @@ export default function Contact() {
                 href={contact.href}
                 target={contact.href.startsWith("http") ? "_blank" : undefined}
                 rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="border border-secondary rounded-lg p-6 hover:border-accent transition-all duration-200 hover:shadow-lg hover:shadow-accent/20 hover:bg-accent/5"
+                className="bg-white border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-200 hover:border-primary"
               >
                 <div className="flex items-start gap-4">
-                  {Icon && <Icon size={24} className="text-accent mt-1" />}
+                  {Icon && <Icon size={24} className="text-primary mt-1" />}
                   <div>
-                    <p className="text-secondary text-sm">{contact.label}</p>
-                    <p className="text-foreground font-semibold break-all">{contact.value}</p>
+                    <p className="text-secondary text-sm font-medium">{contact.label}</p>
+                    <p className="text-foreground font-semibold break-all text-sm mt-1">{contact.value}</p>
                   </div>
                 </div>
               </a>
@@ -70,7 +70,7 @@ export default function Contact() {
         <div className="text-center">
           <a
             href="mailto:manimeets09@gmail.com"
-            className="inline-block px-8 py-3 bg-accent text-background font-semibold rounded-lg hover:bg-primary transition-colors duration-200"
+            className="inline-block px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-accent transition-colors duration-200"
           >
             Send Me an Email
           </a>

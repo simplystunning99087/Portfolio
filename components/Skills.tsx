@@ -6,16 +6,16 @@ interface SkillCategoryProps {
 
 function SkillCategory({ category, skills, icon }: SkillCategoryProps) {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-3">
-        {icon && <div className="text-accent">{icon}</div>}
+    <div className="bg-white border border-border rounded-lg p-6">
+      <div className="flex items-center gap-3 mb-4">
+        {icon && <div className="text-2xl">{icon}</div>}
         <h3 className="text-lg font-semibold text-foreground">{category}</h3>
       </div>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill) => (
           <span
             key={skill}
-            className="px-4 py-2 bg-primary/10 text-foreground rounded-lg border border-primary/30 text-sm hover:border-accent hover:bg-accent/10 hover:text-accent transition-all duration-200 cursor-default"
+            className="px-3 py-2 bg-primary/5 text-foreground rounded-lg border border-primary/20 text-sm font-medium hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 cursor-default"
           >
             {skill}
           </span>
