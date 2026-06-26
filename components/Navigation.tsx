@@ -9,29 +9,29 @@ export default function Navigation() {
 
   const links = [
     { href: "#", label: "Home" },
-    { href: "#projects", label: "Projects" },
+    { href: "#projects", label: "Work" },
+    { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/10">
-      <div className="max-w-5xl mx-auto px-4 md:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="sticky top-0 z-50 bg-background border-b border-secondary">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="flex justify-between items-center h-14">
           {/* Logo */}
-          <Link href="/" className="text-lg font-bold bg-gradient-to-r from-primary-light to-accent-light bg-clip-text text-transparent">
-            MM
+          <Link href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
+            Manivel
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-8">
+          <div className="hidden md:flex gap-12">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground-secondary hover:text-primary-light transition-colors text-sm font-medium relative group"
+                className="text-sm text-foreground-secondary hover:text-foreground transition-colors font-medium"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-light group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
@@ -39,7 +39,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground-secondary hover:text-primary-light transition-colors"
+            className="md:hidden text-foreground-secondary hover:text-foreground transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -48,12 +48,12 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden border-t border-primary/10 py-4 space-y-2">
+          <div className="md:hidden border-t border-secondary py-4 space-y-3">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block text-foreground-secondary hover:text-primary-light transition-colors text-sm font-medium px-4 py-2 rounded-lg hover:bg-primary/5"
+                className="block text-foreground-secondary hover:text-foreground transition-colors text-sm font-medium px-6 py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}

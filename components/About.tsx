@@ -1,74 +1,73 @@
 export default function About() {
   const interests = [
-    {
-      title: "End-to-end AI Systems",
-      description: "From data collection and preprocessing to model deployment on edge devices"
-    },
-    {
-      title: "Computer Vision",
-      description: "Real-time object detection, classification, and embedded ML on microcontrollers"
-    },
-    {
-      title: "LLM & RAG Systems",
-      description: "Building intelligent information retrieval and agent systems"
-    },
-    {
-      title: "Scalable Web Apps",
-      description: "Creating responsive, production-ready solutions"
-    }
+    "End-to-end AI Systems",
+    "Computer Vision",
+    "LLM & RAG",
+    "Embedded ML",
+    "Full-Stack Dev",
+    "DevOps"
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-background-secondary/30 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto">
-        <div className="space-y-4 mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            About Me
+    <section id="about" className="py-20 md:py-32 px-6 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+            About
           </h2>
-          <p className="text-foreground-secondary text-lg">Building bridges between software and hardware</p>
+          <p className="text-foreground-secondary text-base md:text-lg">
+            Building intelligent systems that bridge software and hardware
+          </p>
         </div>
 
-        <div className="space-y-12">
-          {/* Main Bio */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Bio */}
           <div className="space-y-6 text-foreground-secondary leading-relaxed">
-            <p className="text-lg">
-              I&apos;m a second-year B.Tech student studying Cyber Physical Systems at VIT Chennai (CGPA: 8.93/10). My passion lies in building intelligent systems that bridge the gap between software and hardware, with a strong focus on machine learning, computer vision, and autonomous AI agents.
+            <p>
+              Second-year B.Tech student at VIT Chennai studying Cyber Physical Systems (CGPA: 8.93/10). Passionate about building intelligent systems with a focus on machine learning, computer vision, and autonomous AI agents.
             </p>
 
-            <p className="text-lg">
-              My journey spans across AI/ML pipelines, full-stack web development, embedded systems, and DevOps. I&apos;m particularly excited about:
+            <p>
+              Experienced in AI/ML pipelines, full-stack development, embedded systems, and DevOps. I believe in rapid prototyping and shipping products quickly. Delivered enterprise-grade AI systems in sprint timeframes and participated in multiple hackathons.
+            </p>
+
+            <p>
+              Currently seeking internship opportunities to apply these skills in a real-world product environment.
             </p>
           </div>
 
-          {/* Interest Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {interests.map((interest, idx) => (
-              <div key={idx} className="group p-6 rounded-xl border border-primary/20 hover:border-primary/50 bg-gradient-to-br from-background-secondary/40 to-background/40 hover:from-background-secondary/80 hover:to-background/60 transition-all duration-300 backdrop-blur-sm">
-                <div className="flex items-start gap-3">
-                  <span className="text-accent-light text-2xl mt-1">✦</span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent-light transition-colors">
-                      {interest.title}
-                    </h3>
-                    <p className="text-foreground-secondary text-sm leading-relaxed">
-                      {interest.description}
-                    </p>
-                  </div>
-                </div>
+          {/* Expertise */}
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-foreground">Expertise</h3>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span
+                    key={interest}
+                    className="px-3 py-1.5 bg-secondary border border-secondary text-sm text-foreground-secondary rounded hover:border-primary hover:text-foreground transition-colors"
+                  >
+                    {interest}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Bottom Sections */}
-          <div className="space-y-6 text-foreground-secondary leading-relaxed">
-            <p className="text-lg">
-              I believe in rapid prototyping and shipping products quickly. I&apos;ve delivered enterprise-grade AI systems in sprint timeframes, participated in multiple hackathons, and contributed to open-source initiatives. Currently, I&apos;m seeking internship opportunities to apply these skills in a real-world product environment.
-            </p>
-
-            <div className="p-6 rounded-xl border border-accent/20 bg-accent/5 backdrop-blur-sm">
-              <p className="text-lg">
-                <span className="text-accent-light font-semibold">🏆 Academic Recognition:</span> 2nd Place in PYTHONIX (24-hour Hackathon), participation in Shaastra IIT Madras, and multiple technical certifications in AI, ML, and Data Science.
-              </p>
+            <div className="space-y-3 pt-6 border-t border-secondary">
+              <h3 className="text-lg font-semibold text-foreground">Achievements</h3>
+              <ul className="space-y-2 text-sm text-foreground-secondary">
+                <li className="flex gap-2">
+                  <span className="text-primary">→</span>
+                  <span>2nd Place PYTHONIX Hackathon</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-primary">→</span>
+                  <span>Shaastra IIT Madras</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-primary">→</span>
+                  <span>AI/ML Certifications</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

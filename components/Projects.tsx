@@ -1,8 +1,7 @@
-import { ExternalLink, Github, Star } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 
 interface ProjectProps {
   title: string;
-  date: string;
   description: string;
   technologies: string[];
   highlights: string[];
@@ -12,75 +11,74 @@ interface ProjectProps {
   };
 }
 
-function ProjectCard({ title, date, description, technologies, highlights, links }: ProjectProps) {
+function ProjectCard({ title, description, technologies, highlights, links }: ProjectProps) {
   return (
-    <div className="group relative border border-primary/20 hover:border-primary/50 rounded-2xl p-8 bg-gradient-to-br from-background-secondary/50 to-background/50 hover:from-background-secondary/80 hover:to-background/80 transition-all duration-300 backdrop-blur-sm overflow-hidden">
-      {/* Background glow effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl -z-10"></div>
+    <div className="group bg-background-secondary border border-secondary rounded-lg p-6 md:p-8 hover:border-primary transition-all duration-300 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       
-      <div className="flex justify-between items-start mb-4">
+      <div className="relative space-y-4">
         <div>
-          <h3 className="text-2xl font-bold text-foreground mb-1">{title}</h3>
-          <p className="text-primary-light text-sm">{date}</p>
+          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+            {title}
+          </h3>
         </div>
-        <Star size={24} className="text-accent-light opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" />
-      </div>
 
-      <p className="text-foreground-secondary mb-6 leading-relaxed">{description}</p>
+        <p className="text-sm text-foreground-secondary leading-relaxed">
+          {description}
+        </p>
 
-      {/* Highlights */}
-      <div className="mb-6 space-y-3">
-        {highlights.slice(0, 3).map((highlight, idx) => (
-          <div key={idx} className="flex gap-3 text-foreground-secondary text-sm">
-            <span className="text-accent-light text-lg leading-none">→</span>
-            <span>{highlight}</span>
+        <div className="space-y-2 pt-2">
+          {highlights.slice(0, 2).map((highlight, idx) => (
+            <div key={idx} className="flex gap-2 text-sm text-foreground-secondary">
+              <span className="text-primary flex-shrink-0">→</span>
+              <span>{highlight}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-2 pt-3">
+          {technologies.slice(0, 4).map((tech) => (
+            <span
+              key={tech}
+              className="px-2.5 py-1 text-xs bg-secondary text-foreground-secondary rounded border border-secondary hover:border-primary/30 transition-colors"
+            >
+              {tech}
+            </span>
+          ))}
+          {technologies.length > 4 && (
+            <span className="px-2.5 py-1 text-xs text-foreground-secondary">
+              +{technologies.length - 4}
+            </span>
+          )}
+        </div>
+
+        {links && (
+          <div className="flex gap-4 pt-4">
+            {links.github && (
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground-secondary hover:text-primary transition-colors inline-flex items-center gap-1 text-sm"
+              >
+                <Github size={16} />
+                GitHub
+              </a>
+            )}
+            {links.demo && (
+              <a
+                href={links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground-secondary hover:text-primary transition-colors inline-flex items-center gap-1 text-sm"
+              >
+                Demo
+                <ArrowUpRight size={16} />
+              </a>
+            )}
           </div>
-        ))}
+        )}
       </div>
-
-      {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {technologies.map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 bg-primary/10 hover:bg-primary/20 text-primary-light text-xs rounded-lg border border-primary/30 transition-colors"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      {/* Links */}
-      {links && (
-        <div className="flex gap-4 pt-4 border-t border-primary/10">
-          {links.github && (
-            <a
-              href={links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-primary-light hover:text-accent-light transition-colors group/link"
-            >
-              <Github size={18} />
-              <span className="relative">GitHub
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-light group-hover/link:w-full transition-all duration-300"></span>
-              </span>
-            </a>
-          )}
-          {links.demo && (
-            <a
-              href={links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-primary-light hover:text-accent-light transition-colors group/link"
-            >
-              <ExternalLink size={18} />
-              <span className="relative">View Project
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-light group-hover/link:w-full transition-all duration-300"></span>
-              </span>
-            </a>
-          )}
-        </div>
-      )}
     </div>
   );
 }
@@ -89,16 +87,11 @@ export default function Projects() {
   const projects: ProjectProps[] = [
     {
       title: "RAG Triage Agent",
-      date: "May 2026 • 7-hour Sprint",
-      description:
-        "Enterprise-grade RAG triage agent that ingests policies and routes support tickets using advanced LLM capabilities.",
+      description: "Enterprise-grade RAG triage agent that ingests policies and routes support tickets using advanced LLM capabilities.",
       technologies: ["Python", "Chroma DB", "Groq API", "RAG", "LLaMA 70B", "JSON", "API Integration"],
       highlights: [
-        "Ingests policies for Visa, HackerRank, and Claude with vector search",
-        "Routes support tickets using Chroma DB vector search and Groq's LLaMA 70B model",
-        "Implemented strict multi-domain fencing to prevent hallucinations",
-        "Deterministic JSON parsing and robust API rate-limit failsafe",
-        "Fully automated AI pipeline handling complex ticket routing logic",
+        "Ingests policies with vector search and routes tickets using LLaMA 70B",
+        "Implemented multi-domain fencing to prevent hallucinations",
       ],
       links: {
         github: "https://github.com/simplystunning99087",
@@ -106,47 +99,42 @@ export default function Projects() {
     },
     {
       title: "Helmet & Seatbelt Compliance Classifier",
-      date: "Academic Project",
-      description:
-        "End-to-end edge AI pipeline for real-time helmet and seatbelt violation detection on embedded hardware.",
-      technologies: ["Python", "OpenCV", "Scikit-learn", "ESP32-CAM", "ESP32", "Embedded ML"],
+      description: "End-to-end edge AI pipeline for real-time helmet and seatbelt violation detection on embedded hardware.",
+      technologies: ["Python", "OpenCV", "Scikit-learn", "ESP32-CAM", "Embedded ML"],
       highlights: [
-        "Trained binary classification model detecting helmet/seatbelt violations from ESP32-CAM live video",
-        "Achieved ~90% accuracy on 500+ test frames with precision-recall evaluation on imbalanced data",
-        "Integrated ESP32 microcontroller to trigger audio-visual alerts on violations",
-        "Auto-capture of violation screenshots as evidence",
-        "Processing at ~30 FPS on edge device with complete data → inference → response pipeline",
+        "Achieved ~90% accuracy on 500+ test frames with real-time processing at 30 FPS",
+        "Integrated ESP32 microcontroller to trigger audio-visual alerts",
       ],
     },
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 bg-background relative">
-      <div className="max-w-5xl mx-auto">
-        <div className="space-y-4 mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Featured Projects
+    <section id="projects" className="py-20 md:py-32 px-6 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Featured Work
           </h2>
-          <p className="text-foreground-secondary text-lg">Building intelligent systems that make an impact</p>
+          <p className="text-foreground-secondary text-base md:text-lg">
+            Recent projects showcasing expertise in AI, machine learning, and full-stack development.
+          </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="grid gap-6">
           {projects.map((project, idx) => (
             <ProjectCard key={idx} {...project} />
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-foreground-secondary mb-4">Explore more on my GitHub</p>
+        <div className="mt-12 md:mt-16">
           <a
             href="https://github.com/simplystunning99087"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 border border-primary/30 hover:border-primary-light text-foreground-secondary hover:text-accent-light rounded-xl transition-all duration-300 group hover:bg-primary/5"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-foreground-secondary text-foreground font-semibold rounded-lg hover:border-primary hover:text-primary transition-colors group"
           >
-            <Github size={20} />
-            <span>View All Projects</span>
-            <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+            View All Projects
+            <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </a>
         </div>
       </div>
