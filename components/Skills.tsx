@@ -5,13 +5,13 @@ interface SkillCategoryProps {
 
 function SkillCategory({ category, skills }: SkillCategoryProps) {
   return (
-    <div>
-      <h3 className="text-lg font-semibold text-accent mb-4">{category}</h3>
-      <div className="flex flex-wrap gap-3">
+    <div className="p-6 rounded-xl border border-primary/20 hover:border-primary/50 bg-gradient-to-br from-background-secondary/40 to-background/40 hover:from-background-secondary/60 hover:to-background/50 transition-all duration-300 backdrop-blur-sm group">
+      <h3 className="text-lg font-semibold text-primary-light mb-4 group-hover:text-accent-light transition-colors">{category}</h3>
+      <div className="flex flex-wrap gap-2">
         {skills.map((skill) => (
           <span
             key={skill}
-            className="px-4 py-2 bg-primary/10 text-foreground rounded-lg border border-primary/30 text-sm hover:border-accent hover:text-accent transition-colors"
+            className="px-3 py-1.5 bg-primary/5 hover:bg-primary/15 text-foreground-secondary hover:text-primary-light rounded-lg border border-primary/20 hover:border-primary/50 text-sm transition-all duration-300 cursor-default"
           >
             {skill}
           </span>
@@ -51,12 +51,15 @@ export default function Skills() {
 
   return (
     <section className="py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-foreground">
-          Skills & Expertise
-        </h2>
+      <div className="max-w-5xl mx-auto">
+        <div className="space-y-4 mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Skills & Expertise
+          </h2>
+          <p className="text-foreground-secondary text-lg">Technologies and domains I work with</p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-4">
           {skillCategories.map((category, idx) => (
             <SkillCategory key={idx} {...category} />
           ))}

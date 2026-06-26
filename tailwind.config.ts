@@ -8,14 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0f0f14",
-        foreground: "#e8e9ef",
-        primary: "#4f46e5",
-        secondary: "#64748b",
-        accent: "#06b6d4",
+        background: "#0a0e27",
+        "background-secondary": "#131b35",
+        foreground: "#f0f3ff",
+        "foreground-secondary": "#b8c2e1",
+        primary: "#6366f1",
+        "primary-light": "#818cf8",
+        secondary: "#7c8adb",
+        accent: "#10b981",
+        "accent-light": "#34d399",
       },
       fontFamily: {
-        sans: ['system-ui', 'sans-serif'],
+        sans: ['system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },
