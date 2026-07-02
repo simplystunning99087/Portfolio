@@ -4,8 +4,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-secondary/20 bg-background relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 pointer-events-none" />
+    <footer className="border-t border-cyan-400/30 bg-background relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
       
       <div className="relative py-16 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">
@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Brand */}
             <div className="md:col-span-1 space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center font-bold text-background text-sm">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center font-bold text-background text-sm">
                   M
                 </div>
                 <span className="font-bold text-foreground">Manivel</span>
@@ -104,7 +104,7 @@ export default function Footer() {
                   href="https://github.com/simplystunning99087"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-muted/50 text-secondary hover:text-cyan-300 hover:bg-muted transition-all duration-300"
+                  className="p-2 rounded-lg bg-cyan-400/10 text-secondary hover:text-cyan-300 hover:bg-cyan-400/20 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.4)] transition-all duration-300 border border-cyan-400/20 backdrop-blur-sm"
                   title="GitHub"
                   aria-label="GitHub"
                 >
@@ -114,7 +114,7 @@ export default function Footer() {
                   href="https://linkedin.com/in/manivel-mughilan-6bb65036a"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-muted/50 text-secondary hover:text-blue-400 hover:bg-muted transition-all duration-300"
+                  className="p-2 rounded-lg bg-cyan-400/10 text-secondary hover:text-cyan-300 hover:bg-cyan-400/20 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.4)] transition-all duration-300 border border-cyan-400/20 backdrop-blur-sm"
                   title="LinkedIn"
                   aria-label="LinkedIn"
                 >
@@ -122,7 +122,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="mailto:manimeets09@gmail.com"
-                  className="p-2 rounded-lg bg-muted/50 text-secondary hover:text-cyan-300 hover:bg-muted transition-all duration-300"
+                  className="p-2 rounded-lg bg-cyan-400/10 text-secondary hover:text-cyan-300 hover:bg-cyan-400/20 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.4)] transition-all duration-300 border border-cyan-400/20 backdrop-blur-sm"
                   title="Email"
                   aria-label="Email"
                 >
@@ -132,7 +132,7 @@ export default function Footer() {
                   href="https://leetcode.com/u/ManCreateCodeDevelop/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-muted/50 text-secondary hover:text-cyan-300 hover:bg-muted transition-all duration-300"
+                  className="p-2 rounded-lg bg-cyan-400/10 text-secondary hover:text-cyan-300 hover:bg-cyan-400/20 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.4)] transition-all duration-300 border border-cyan-400/20 backdrop-blur-sm"
                   title="LeetCode"
                   aria-label="LeetCode"
                 >
@@ -142,7 +142,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-secondary/20 pt-8">
+          <div className="border-t border-cyan-400/20 pt-8">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-secondary text-xs">
               <p>© {currentYear} Manivel Mughilan. All rights reserved.</p>
               <p>Crafted with passion for building intelligent systems.</p>

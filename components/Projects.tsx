@@ -14,15 +14,15 @@ interface ProjectProps {
 
 function ProjectCard({ title, date, description, technologies, highlights, links }: ProjectProps) {
   return (
-    <div className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-xl p-6 md:p-8 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
+    <div className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-xl p-6 md:p-8 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl">
       {/* Hover gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/5 group-hover:to-cyan-500/5 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
       
       <div className="relative space-y-4">
         <div className="flex justify-between items-start gap-4">
           <div className="space-y-2 flex-1">
             <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-300 transition-colors">{title}</h3>
-            <p className="text-cyan-400/70 text-sm font-medium">{date}</p>
+            <p className="text-cyan-300/70 text-sm font-medium">{date}</p>
           </div>
         </div>
 
@@ -32,7 +32,7 @@ function ProjectCard({ title, date, description, technologies, highlights, links
         <div className="space-y-2">
           {highlights.slice(0, 3).map((highlight, idx) => (
             <div key={idx} className="flex gap-3 text-secondary text-sm">
-              <span className="text-blue-400 flex-shrink-0 mt-0.5">→</span>
+              <span className="text-cyan-400 flex-shrink-0 mt-0.5">→</span>
               <span>{highlight}</span>
             </div>
           ))}
@@ -46,7 +46,7 @@ function ProjectCard({ title, date, description, technologies, highlights, links
           {technologies.slice(0, 5).map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 bg-blue-500/10 text-blue-300 text-xs rounded-full border border-blue-400/30 hover:bg-blue-500/20 transition-colors"
+              className="px-3 py-1 bg-cyan-400/20 text-cyan-300 text-xs rounded-full border border-cyan-400/50 hover:bg-cyan-400/30 hover:border-cyan-300/70 transition-colors"
             >
               {tech}
             </span>
@@ -58,13 +58,13 @@ function ProjectCard({ title, date, description, technologies, highlights, links
 
         {/* Links */}
         {links && (
-          <div className="flex gap-3 pt-4 border-t border-secondary/20">
+          <div className="flex gap-3 pt-4 border-t border-cyan-400/20">
             {links.github && (
               <a
                 href={links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
               >
                 <Github size={16} />
                 <span>GitHub</span>
@@ -75,7 +75,7 @@ function ProjectCard({ title, date, description, technologies, highlights, links
                 href={links.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
               >
                 <ExternalLink size={16} />
                 <span>View Project</span>
@@ -124,13 +124,13 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 bg-background relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 pointer-events-none" />
+    <section id="projects" className="py-20 px-4 md:px-8 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
       
       <div className="relative max-w-5xl mx-auto">
         <div className="mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 w-fit mb-6">
-            <span className="text-xs font-medium text-blue-300">PORTFOLIO</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/20 border border-cyan-400/50 backdrop-blur-sm w-fit mb-6 hover:bg-cyan-400/30 transition-all">
+            <span className="text-xs font-medium text-cyan-300">PORTFOLIO</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
             Featured Projects
@@ -151,7 +151,7 @@ export default function Projects() {
             href="https://github.com/simplystunning99087"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group backdrop-blur-sm"
           >
             <Github size={20} />
             <span>Explore All Projects</span>

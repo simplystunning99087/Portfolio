@@ -4,23 +4,28 @@ import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 md:px-8 py-20 overflow-hidden">
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 pointer-events-none" />
+      {/* Animated background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
+      
+      {/* Animated grid pattern background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,242,254,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,254,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      </div>
       
       <div className="relative max-w-5xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 w-fit">
-              <Sparkles size={16} className="text-blue-400" />
-              <span className="text-sm font-medium text-blue-300">Available for Internships</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-400/50 backdrop-blur-sm w-fit hover:bg-cyan-500/30 hover:border-cyan-300/70 transition-all duration-300">
+              <Sparkles size={16} className="text-cyan-300 neon-text" />
+              <span className="text-sm font-medium text-cyan-200">Available for Internships</span>
             </div>
 
             {/* Name & Title */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-bold text-balance leading-tight">
-                Manivel <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Mughilan</span>
+                Manivel <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 animate-pulse">Mughilan</span>
               </h1>
               <p className="text-xl md:text-2xl text-secondary font-light">
                 AI/ML Engineer & Full-Stack Developer
@@ -48,14 +53,14 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="#projects"
-                className="group px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center gap-2"
+                className="group px-6 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
               >
                 View My Work
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 border border-secondary/30 text-foreground font-semibold rounded-lg hover:bg-muted/50 hover:border-cyan-400/50 transition-all duration-300"
+                className="group px-6 py-3 border border-cyan-400/50 text-cyan-300 font-semibold rounded-lg hover:bg-cyan-400/10 hover:border-cyan-300/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-300 backdrop-blur-sm"
               >
                 Get in Touch
               </a>
@@ -95,34 +100,34 @@ export default function Hero() {
           </div>
 
           {/* Right Column - Stats Card */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl blur-xl" />
-            <div className="relative bg-gradient-to-br from-muted/80 to-muted/40 border border-secondary/20 rounded-2xl p-8 space-y-6">
+          <div className="relative float">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl blur-2xl" />
+            <div className="relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-2xl p-8 space-y-6 backdrop-blur-xl hover:border-cyan-300/50 transition-all duration-300">
               <div className="space-y-4">
-                <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider">Expertise</h3>
+                <h3 className="text-sm font-semibold text-cyan-300 uppercase tracking-wider">Expertise</h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-blue-400">▪</span>
+                    <span className="text-cyan-400">▪</span>
                     <span className="text-foreground">Machine Learning & AI</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-cyan-400">▪</span>
+                    <span className="text-purple-400">▪</span>
                     <span className="text-foreground">Computer Vision</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-blue-400">▪</span>
+                    <span className="text-cyan-400">▪</span>
                     <span className="text-foreground">Full-Stack Development</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-cyan-400">▪</span>
+                    <span className="text-purple-400">▪</span>
                     <span className="text-foreground">Embedded Systems</span>
                   </div>
                 </div>
               </div>
               
-              <div className="border-t border-secondary/20 pt-6 space-y-3">
+              <div className="border-t border-cyan-400/20 pt-6 space-y-3">
                 <div className="space-y-1">
-                  <p className="text-xs text-secondary uppercase">Featured Achievement</p>
+                  <p className="text-xs text-cyan-300 uppercase">Featured Achievement</p>
                   <p className="text-sm text-foreground">2nd Place in PYTHONIX Hackathon</p>
                 </div>
               </div>

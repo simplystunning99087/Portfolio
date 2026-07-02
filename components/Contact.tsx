@@ -35,14 +35,14 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 md:px-8 bg-background relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 pointer-events-none" />
+    <section id="contact" className="py-20 px-4 md:px-8 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
       
       <div className="relative max-w-5xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30">
-              <span className="text-xs font-medium text-blue-300">GET IN TOUCH</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/20 border border-cyan-400/50 backdrop-blur-sm hover:bg-cyan-400/30 transition-all">
+              <span className="text-xs font-medium text-cyan-300">GET IN TOUCH</span>
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
@@ -62,12 +62,12 @@ export default function Contact() {
                 href={contact.href}
                 target={contact.href.startsWith("http") ? "_blank" : undefined}
                 rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10"
+                className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-lg p-6 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative space-y-3">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center group-hover:bg-blue-500/30 transition-all">
-                    {Icon && <Icon size={24} className="text-blue-300" />}
+                  <div className="w-12 h-12 rounded-lg bg-cyan-400/20 border border-cyan-400/50 flex items-center justify-center group-hover:bg-cyan-400/30 group-hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all">
+                    {Icon && <Icon size={24} className="text-cyan-300" />}
                   </div>
                   <div>
                     <p className="text-secondary text-sm">{contact.label}</p>
@@ -82,7 +82,7 @@ export default function Contact() {
         <div className="text-center">
           <a
             href="mailto:manimeets09@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group backdrop-blur-sm"
           >
             Send Me an Email
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
