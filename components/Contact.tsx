@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ArrowRight, Phone } from "lucide-react";
 
 export default function Contact() {
   const contacts = [
@@ -12,6 +12,7 @@ export default function Contact() {
       label: "Phone",
       value: "+91 90257 80639",
       href: "tel:+919025780639",
+      icon: Phone,
     },
     {
       label: "GitHub",
@@ -34,17 +35,25 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-foreground text-center">
-          Let&apos;s Connect
-        </h2>
+    <section id="contact" className="py-20 px-4 md:px-8 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
+      
+      <div className="relative max-w-5xl mx-auto">
+        <div className="text-center mb-16 space-y-4">
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/20 border border-cyan-400/50 backdrop-blur-sm hover:bg-cyan-400/30 transition-all">
+              <span className="text-xs font-medium text-cyan-300">GET IN TOUCH</span>
+            </div>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Let&apos;s Connect
+          </h2>
+          <p className="text-secondary text-lg max-w-2xl mx-auto">
+            I&apos;m always open to discussing new projects, internship opportunities, or having a chat about AI, engineering, and technology.
+          </p>
+        </div>
 
-        <p className="text-center text-secondary text-lg mb-12 max-w-2xl mx-auto">
-          I&apos;m always open to discussing new projects, internship opportunities, or just having a chat about AI, engineering, and technology.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {contacts.map((contact, idx) => {
             const Icon = contact.icon;
             return (
@@ -53,13 +62,16 @@ export default function Contact() {
                 href={contact.href}
                 target={contact.href.startsWith("http") ? "_blank" : undefined}
                 rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="border border-secondary rounded-lg p-6 hover:border-accent transition-all duration-200 hover:shadow-lg hover:shadow-accent/20 hover:bg-accent/5"
+                className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-lg p-6 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl"
               >
-                <div className="flex items-start gap-4">
-                  {Icon && <Icon size={24} className="text-accent mt-1" />}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative space-y-3">
+                  <div className="w-12 h-12 rounded-lg bg-cyan-400/20 border border-cyan-400/50 flex items-center justify-center group-hover:bg-cyan-400/30 group-hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all">
+                    {Icon && <Icon size={24} className="text-cyan-300" />}
+                  </div>
                   <div>
                     <p className="text-secondary text-sm">{contact.label}</p>
-                    <p className="text-foreground font-semibold break-all">{contact.value}</p>
+                    <p className="text-foreground font-semibold break-all group-hover:text-cyan-300 transition-colors text-sm">{contact.value}</p>
                   </div>
                 </div>
               </a>
@@ -70,9 +82,10 @@ export default function Contact() {
         <div className="text-center">
           <a
             href="mailto:manimeets09@gmail.com"
-            className="inline-block px-8 py-3 bg-accent text-background font-semibold rounded-lg hover:bg-primary transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group backdrop-blur-sm"
           >
             Send Me an Email
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>

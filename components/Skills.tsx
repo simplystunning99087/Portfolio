@@ -5,17 +5,20 @@ interface SkillCategoryProps {
 
 function SkillCategory({ category, skills }: SkillCategoryProps) {
   return (
-    <div>
-      <h3 className="text-lg font-semibold text-accent mb-4">{category}</h3>
-      <div className="flex flex-wrap gap-3">
-        {skills.map((skill) => (
-          <span
-            key={skill}
-            className="px-4 py-2 bg-primary/10 text-foreground rounded-lg border border-primary/30 text-sm hover:border-accent hover:text-accent transition-colors"
-          >
-            {skill}
-          </span>
-        ))}
+    <div className="group relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm" />
+      <div className="relative space-y-4">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-cyan-300">{category}</h3>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span
+              key={skill}
+              className="px-3 py-1.5 bg-cyan-400/10 text-foreground rounded-lg border border-cyan-400/30 text-xs font-medium hover:border-cyan-300/70 hover:bg-cyan-400/20 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.4)] transition-all duration-300 cursor-default backdrop-blur-sm"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -50,13 +53,23 @@ export default function Skills() {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-foreground">
-          Skills & Expertise
-        </h2>
+    <section className="py-20 px-4 md:px-8 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
+      
+      <div className="relative max-w-5xl mx-auto">
+        <div className="mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/20 border border-cyan-400/50 backdrop-blur-sm w-fit mb-6 hover:bg-cyan-400/30 transition-all">
+            <span className="text-xs font-medium text-cyan-300">SKILLS</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Skills & Expertise
+          </h2>
+          <p className="text-secondary text-lg max-w-2xl">
+            A comprehensive toolkit spanning AI, full-stack development, embedded systems, and modern DevOps practices.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, idx) => (
             <SkillCategory key={idx} {...category} />
           ))}

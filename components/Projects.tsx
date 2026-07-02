@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -14,65 +14,76 @@ interface ProjectProps {
 
 function ProjectCard({ title, date, description, technologies, highlights, links }: ProjectProps) {
   return (
-    <div className="border border-secondary rounded-lg p-8 hover:border-accent transition-colors duration-200">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h3 className="text-2xl font-bold text-foreground mb-1">{title}</h3>
-          <p className="text-accent text-sm">{date}</p>
-        </div>
-      </div>
-
-      <p className="text-secondary mb-6 leading-relaxed">{description}</p>
-
-      {/* Highlights */}
-      <div className="mb-6 space-y-2">
-        {highlights.map((highlight, idx) => (
-          <div key={idx} className="flex gap-2 text-secondary">
-            <span className="text-accent">•</span>
-            <span>{highlight}</span>
+    <div className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-xl p-6 md:p-8 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl">
+      {/* Hover gradient effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
+      
+      <div className="relative space-y-4">
+        <div className="flex justify-between items-start gap-4">
+          <div className="space-y-2 flex-1">
+            <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-300 transition-colors">{title}</h3>
+            <p className="text-cyan-300/70 text-sm font-medium">{date}</p>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {technologies.map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 bg-primary/10 text-accent text-xs rounded-full border border-accent/30"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+        <p className="text-secondary leading-relaxed">{description}</p>
 
-      {/* Links */}
-      {links && (
-        <div className="flex gap-4 pt-4 border-t border-secondary">
-          {links.github && (
-            <a
-              href={links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-accent hover:text-foreground transition-colors"
-            >
-              <Github size={18} />
-              <span>GitHub</span>
-            </a>
-          )}
-          {links.demo && (
-            <a
-              href={links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-accent hover:text-foreground transition-colors"
-            >
-              <ExternalLink size={18} />
-              <span>View Project</span>
-            </a>
+        {/* Highlights */}
+        <div className="space-y-2">
+          {highlights.slice(0, 3).map((highlight, idx) => (
+            <div key={idx} className="flex gap-3 text-secondary text-sm">
+              <span className="text-cyan-400 flex-shrink-0 mt-0.5">→</span>
+              <span>{highlight}</span>
+            </div>
+          ))}
+          {highlights.length > 3 && (
+            <p className="text-secondary text-sm italic">+ {highlights.length - 3} more highlights</p>
           )}
         </div>
-      )}
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 pt-2">
+          {technologies.slice(0, 5).map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 bg-cyan-400/20 text-cyan-300 text-xs rounded-full border border-cyan-400/50 hover:bg-cyan-400/30 hover:border-cyan-300/70 transition-colors"
+            >
+              {tech}
+            </span>
+          ))}
+          {technologies.length > 5 && (
+            <span className="px-3 py-1 text-secondary text-xs">+{technologies.length - 5} more</span>
+          )}
+        </div>
+
+        {/* Links */}
+        {links && (
+          <div className="flex gap-3 pt-4 border-t border-cyan-400/20">
+            {links.github && (
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
+              >
+                <Github size={16} />
+                <span>GitHub</span>
+              </a>
+            )}
+            {links.demo && (
+              <a
+                href={links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
+              >
+                <ExternalLink size={16} />
+                <span>View Project</span>
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -113,28 +124,38 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-foreground">
-          Featured Projects
-        </h2>
+    <section id="projects" className="py-20 px-4 md:px-8 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
+      
+      <div className="relative max-w-5xl mx-auto">
+        <div className="mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/20 border border-cyan-400/50 backdrop-blur-sm w-fit mb-6 hover:bg-cyan-400/30 transition-all">
+            <span className="text-xs font-medium text-cyan-300">PORTFOLIO</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Featured Projects
+          </h2>
+          <p className="text-secondary text-lg max-w-2xl">
+            Building end-to-end AI systems and intelligent applications that solve real-world problems.
+          </p>
+        </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {projects.map((project, idx) => (
             <ProjectCard key={idx} {...project} />
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-secondary mb-4">More projects on my GitHub</p>
+        <div className="mt-16 text-center">
           <a
             href="https://github.com/simplystunning99087"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-accent text-accent rounded-lg hover:bg-accent hover:text-background transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group backdrop-blur-sm"
           >
             <Github size={20} />
-            <span>View All Projects</span>
+            <span>Explore All Projects</span>
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>
