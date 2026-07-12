@@ -1,4 +1,9 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+'use client';
+
+import { ExternalLink, Github, ArrowRight, Trophy } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import React from "react";
 
 interface ProjectProps {
   title: string;
@@ -10,18 +15,32 @@ interface ProjectProps {
     github?: string;
     demo?: string;
   };
+  badge?: string;
 }
 
-function ProjectCard({ title, date, description, technologies, highlights, links }: ProjectProps) {
+function ProjectCard({ title, date, description, technologies, highlights, links, badge }: ProjectProps) {
   return (
-    <div className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-xl p-6 md:p-8 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-xl p-6 md:p-8 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl">
       {/* Hover gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
       
       <div className="relative space-y-4">
         <div className="flex justify-between items-start gap-4">
           <div className="space-y-2 flex-1">
-            <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-300 transition-colors">{title}</h3>
+            <div className="flex items-center gap-3">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-300 transition-colors">{title}</h3>
+              {badge && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 bg-amber-400/20 border border-amber-400/50 rounded-full text-amber-300 text-xs font-semibold">
+                  <Trophy size={14} />
+                  {badge}
+                </span>
+              )}
+            </div>
             <p className="text-cyan-300/70 text-sm font-medium">{date}</p>
           </div>
         </div>
@@ -84,7 +103,7 @@ function ProjectCard({ title, date, description, technologies, highlights, links
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -106,6 +125,7 @@ export default function Projects() {
       links: {
         github: "https://github.com/simplystunning99087",
       },
+      badge: "7-Hour Sprint Winner",
     },
     {
       title: "Helmet & Seatbelt Compliance Classifier",
@@ -140,11 +160,25 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="space-y-6">
+        <motion.div
+          className="space-y-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
           {projects.map((project, idx) => (
             <ProjectCard key={idx} {...project} />
           ))}
-        </div>
+        </motion.div>
 
         <div className="mt-16 text-center">
           <a

@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function Experience() {
   const roles = [
     {
@@ -54,10 +58,28 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="grid gap-4 mb-12">
+        <motion.div
+          className="grid gap-4 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.08,
+              },
+            },
+          }}
+        >
           {roles.map((role, idx) => (
-            <div
+            <motion.div
               key={idx}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
               className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10"
             >
               <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${role.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-full blur-2xl -mr-16 -mt-16`} />
@@ -74,11 +96,16 @@ export default function Experience() {
                 <p className="text-secondary text-sm">{role.period}</p>
                 <p className="text-secondary">{role.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="relative bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl p-8 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl p-8 space-y-4">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-xl" />
           <div className="relative space-y-4">
             <h3 className="text-xl font-semibold text-cyan-300">
@@ -91,7 +118,7 @@ export default function Experience() {
               Eager to apply my skills in AI/ML, embedded systems, and full-stack development in a real-world product environment where I can contribute meaningfully to shipping intelligent solutions.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

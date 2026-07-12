@@ -1,11 +1,24 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 interface SkillCategoryProps {
   category: string;
   skills: string[];
+  index?: number;
 }
 
-function SkillCategory({ category, skills }: SkillCategoryProps) {
+function SkillCategory({ category, skills, index = 0 }: SkillCategoryProps) {
+  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+
   return (
-    <div className="group relative">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group relative">
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm" />
       <div className="relative space-y-4">
         <h3 className="text-sm font-semibold uppercase tracking-wider text-cyan-300">{category}</h3>
@@ -20,7 +33,7 @@ function SkillCategory({ category, skills }: SkillCategoryProps) {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -69,11 +82,25 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.05,
+              },
+            },
+          }}
+        >
           {skillCategories.map((category, idx) => (
-            <SkillCategory key={idx} {...category} />
+            <SkillCategory key={idx} {...category} index={idx} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

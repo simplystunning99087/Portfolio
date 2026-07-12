@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function Education() {
   return (
     <section className="py-20 px-4 md:px-8 bg-background relative">
@@ -14,10 +18,33 @@ export default function Education() {
         </div>
 
         {/* Education */}
-        <div className="mb-16">
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-lg font-semibold uppercase tracking-wider text-cyan-400 mb-8">Education</h3>
-          <div className="space-y-6">
-            <div className="relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 overflow-hidden">
+          <motion.div
+            className="space-y-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 },
+              },
+            }}
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              className="relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5" />
               <div className="relative">
                 <div className="flex justify-between items-start mb-3 gap-4">
@@ -32,9 +59,14 @@ export default function Education() {
                 <p className="text-secondary mb-2">Vellore Institute of Technology, Chennai</p>
                 <p className="text-foreground font-semibold">CGPA: 8.93 / 10</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 overflow-hidden">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              className="relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5" />
               <div className="relative">
                 <div className="flex justify-between items-start mb-3 gap-4">
@@ -46,15 +78,38 @@ export default function Education() {
                 <p className="text-secondary mb-2">Sishya School, Hosur</p>
                 <p className="text-foreground font-semibold">Grade: A+</p>
               </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Achievements & Events */}
-        <div className="mb-16">
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-lg font-semibold uppercase tracking-wider text-blue-400 mb-8">Achievements & Events</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
+          <motion.div
+            className="grid md:grid-cols-2 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.08 },
+              },
+            }}
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative space-y-2">
                 <p className="text-lg font-semibold text-foreground">🏅 2nd Place</p>
@@ -62,9 +117,14 @@ export default function Education() {
                 <p className="text-secondary text-sm">24-Hour Hackathon • Mar 7–8, 2026</p>
                 <p className="text-secondary text-sm">CADS & SENSE, VIT Chennai</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative space-y-2">
                 <p className="text-lg font-semibold text-foreground">🎯 Reverse Coding X</p>
@@ -72,9 +132,14 @@ export default function Education() {
                 <p className="text-secondary text-sm">Algorithmic Competition • Jan 2026</p>
                 <p className="text-secondary text-sm">IIT Madras Flagship Festival</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative space-y-2">
                 <p className="text-lg font-semibold text-foreground">💻 CraftMySite</p>
@@ -82,23 +147,45 @@ export default function Education() {
                 <p className="text-secondary text-sm">International Tech Fest • Oct 2025</p>
                 <p className="text-secondary text-sm">Sponsored by HCLTech</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              className="group relative bg-gradient-to-br from-muted/60 to-muted/30 border border-secondary/20 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative space-y-2">
                 <p className="text-lg font-semibold text-foreground">🔧 SCOPE Club</p>
                 <p className="text-cyan-400 font-medium">Hackathon</p>
                 <p className="text-secondary text-sm">BIS-SCOPE Hackathon • Mar 2026</p>
               </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Certifications */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-lg font-semibold uppercase tracking-wider text-cyan-400 mb-8">Certifications</h3>
-          <div className="grid md:grid-cols-2 gap-3">
+          <motion.div
+            className="grid md:grid-cols-2 gap-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.05 },
+              },
+            }}
+          >
             {[
               "HackerRank Orchestrate (May 2026)",
               "Machine Learning for Absolute Beginners - Udemy (Jun 2026)",
@@ -109,13 +196,20 @@ export default function Education() {
               "Generative AI Architectures - Udemy (Jun 2026)",
               "House of OpenSource - VIT (Sep 2025)",
             ].map((cert, idx) => (
-              <div key={idx} className="flex items-center gap-3 p-4 rounded-lg bg-muted/40 border border-secondary/20 hover:border-blue-400/50 hover:bg-muted/60 transition-all duration-300 group">
+              <motion.div
+                key={idx}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+                }}
+                className="flex items-center gap-3 p-4 rounded-lg bg-muted/40 border border-secondary/20 hover:border-blue-400/50 hover:bg-muted/60 transition-all duration-300 group"
+              >
                 <span className="text-blue-400 flex-shrink-0 font-bold">✓</span>
                 <span className="text-foreground text-sm group-hover:text-cyan-300 transition-colors">{cert}</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
