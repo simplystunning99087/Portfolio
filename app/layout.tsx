@@ -11,7 +11,14 @@ export const metadata: Metadata = {
     description: "Building end-to-end AI systems from data capture to hardware deployment",
     type: "website",
     url: "https://portfolio-p9.vercel.app",
-    image: "https://portfolio-p9.vercel.app/og-image.png",
+    images: [
+      {
+        url: "https://portfolio-p9.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Manivel Mughilan - AI/ML Engineer & Full-Stack Developer",
+      },
+    ],
   },
   authors: [{ name: "Manivel Mughilan" }],
 };
