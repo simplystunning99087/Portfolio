@@ -88,33 +88,34 @@ function ProjectCard({ title, date, description, technologies, highlights, links
             )}
           </div>
 
-        {/* Links */}
-        {links && (
-          <div className="flex gap-3 pt-4 border-t border-cyan-400/20">
-            {links.github && (
-              <a
-                href={links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
-              >
-                <Github size={16} />
-                <span>GitHub</span>
-              </a>
-            )}
-            {links.demo && (
-              <a
-                href={links.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
-              >
-                <ExternalLink size={16} />
-                <span>View Project</span>
-              </a>
-            )}
-          </div>
-        )}
+          {/* Links */}
+          {links && (
+            <div className="flex gap-3 pt-4 border-t border-cyan-400/20">
+              {links.github && (
+                <a
+                  href={links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
+                >
+                  <Github size={16} />
+                  <span>GitHub</span>
+                </a>
+              )}
+              {links.demo && (
+                <a
+                  href={links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all text-sm font-medium"
+                >
+                  <ExternalLink size={16} />
+                  <span>View Project</span>
+                </a>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   );
