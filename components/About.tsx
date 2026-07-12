@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function About() {
   return (
     <section className="py-20 px-4 md:px-8 bg-background relative">
@@ -13,9 +17,20 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 lg:gap-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           {/* Main content */}
-          <div className="md:col-span-2 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="md:col-span-2 space-y-6">
             <div className="space-y-4 text-secondary leading-relaxed">
               <p className="text-lg">
                 I&apos;m a second-year <strong className="text-foreground">B.Tech student in Cyber Physical Systems</strong> at VIT Chennai (CGPA: 8.93/10). My passion lies in building intelligent systems that bridge the gap between software and hardware, with a strong focus on machine learning, computer vision, and autonomous AI agents.
@@ -64,10 +79,15 @@ export default function About() {
             <p className="text-secondary pt-4">
               I believe in rapid prototyping and shipping products quickly. I&apos;ve delivered enterprise-grade AI systems in sprint timeframes and participated in multiple hackathons. Currently seeking internship opportunities to apply these skills in real-world environments.
             </p>
-          </div>
+          </motion.div>
 
           {/* Sidebar - Stats/Highlights */}
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-6">
             {/* Info Card */}
             <div className="bg-gradient-to-br from-muted/80 to-muted/40 border border-secondary/20 rounded-xl p-6 space-y-6">
               <div className="space-y-2">
@@ -107,8 +127,8 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

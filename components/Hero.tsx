@@ -1,9 +1,35 @@
+'use client';
+
 import Link from "next/link";
 import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function Hero() {
+  const { ref } = useInView({ threshold: 0.3 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 md:px-8 py-20 overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-center justify-center px-4 md:px-8 py-20 overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/5 to-cyan-500/10 pointer-events-none" />
       
@@ -13,32 +39,37 @@ export default function Hero() {
       </div>
       
       <div className="relative max-w-5xl mx-auto w-full">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          className="grid md:grid-cols-2 gap-12 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <motion.div className="space-y-8" variants={containerVariants}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-400/50 backdrop-blur-sm w-fit hover:bg-cyan-500/30 hover:border-cyan-300/70 transition-all duration-300">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-400/50 backdrop-blur-sm w-fit hover:bg-cyan-500/30 hover:border-cyan-300/70 transition-all duration-300">
               <Sparkles size={16} className="text-cyan-300 neon-text" />
               <span className="text-sm font-medium text-cyan-200">Available for Internships</span>
-            </div>
+            </motion.div>
 
             {/* Name & Title */}
-            <div className="space-y-4">
+            <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-bold text-balance leading-tight">
                 Manivel <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 animate-pulse">Mughilan</span>
               </h1>
               <p className="text-xl md:text-2xl text-secondary font-light">
                 AI/ML Engineer & Full-Stack Developer
               </p>
-            </div>
+            </motion.div>
 
             {/* Bio */}
-            <p className="text-lg text-secondary leading-relaxed max-w-md">
+            <motion.p variants={itemVariants} className="text-lg text-secondary leading-relaxed max-w-md">
               Building intelligent systems that bridge software and hardware. Specializing in end-to-end AI pipelines, computer vision, and production-ready solutions.
-            </p>
+            </motion.p>
 
             {/* Location & Status */}
-            <div className="flex flex-col gap-3 text-secondary text-sm">
+            <motion.div variants={itemVariants} className="flex flex-col gap-3 text-secondary text-sm">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-cyan-400" />
                 Hosur, Tamil Nadu
@@ -47,10 +78,10 @@ export default function Hero() {
                 <span className="w-2 h-2 rounded-full bg-blue-400" />
                 VIT Chennai &bull; B.Tech (CGPA: 8.93)
               </div>
-            </div>
+            </motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="#projects"
                 className="group px-6 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
@@ -64,10 +95,10 @@ export default function Hero() {
               >
                 Get in Touch
               </a>
-            </div>
+            </motion.div>
 
             {/* Social Links */}
-            <div className="flex gap-4 pt-8 border-t border-secondary/20">
+            <motion.div variants={itemVariants} className="flex gap-4 pt-8 border-t border-secondary/20">
               <a
                 href="https://github.com/simplystunning99087"
                 target="_blank"
@@ -96,11 +127,13 @@ export default function Hero() {
               >
                 <Mail size={20} />
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column - Stats Card */}
-          <div className="relative float">
+          <motion.div
+            variants={itemVariants}
+            className="relative float">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl blur-2xl" />
             <div className="relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-2xl p-8 space-y-6 backdrop-blur-xl hover:border-cyan-300/50 transition-all duration-300">
               <div className="space-y-4">
@@ -132,8 +165,8 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

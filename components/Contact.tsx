@@ -1,4 +1,8 @@
+'use client';
+
 import { Github, Linkedin, Mail, FileText, ArrowRight, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import ContactForm from "./ContactForm";
 
 export default function Contact() {
   const contacts = [
@@ -53,40 +57,56 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-          {contacts.map((contact, idx) => {
-            const Icon = contact.icon;
-            return (
-              <a
-                key={idx}
-                href={contact.href}
-                target={contact.href.startsWith("http") ? "_blank" : undefined}
-                rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-lg p-6 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative space-y-3">
-                  <div className="w-12 h-12 rounded-lg bg-cyan-400/20 border border-cyan-400/50 flex items-center justify-center group-hover:bg-cyan-400/30 group-hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all">
-                    {Icon && <Icon size={24} className="text-cyan-300" />}
-                  </div>
-                  <div>
-                    <p className="text-secondary text-sm">{contact.label}</p>
-                    <p className="text-foreground font-semibold break-all group-hover:text-cyan-300 transition-colors text-sm">{contact.value}</p>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-
-        <div className="text-center">
-          <a
-            href="mailto:manimeets09@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group backdrop-blur-sm"
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
           >
-            Send Me an Email
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {contacts.map((contact, idx) => {
+                const Icon = contact.icon;
+                return (
+                  <motion.a
+                    key={idx}
+                    href={contact.href}
+                    target={contact.href.startsWith("http") ? "_blank" : undefined}
+                    rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-lg p-6 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative space-y-3">
+                      <div className="w-12 h-12 rounded-lg bg-cyan-400/20 border border-cyan-400/50 flex items-center justify-center group-hover:bg-cyan-400/30 group-hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.6)] transition-all">
+                        {Icon && <Icon size={24} className="text-cyan-300" />}
+                      </div>
+                      <div>
+                        <p className="text-secondary text-sm">{contact.label}</p>
+                        <p className="text-foreground font-semibold break-all group-hover:text-cyan-300 transition-colors text-sm">{contact.value}</p>
+                      </div>
+                    </div>
+                  </motion.a>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-cyan-400/5 to-purple-500/5 border border-cyan-400/20 rounded-xl p-8 backdrop-blur-sm"
+          >
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Send me a message</h3>
+            <ContactForm />
+          </motion.div>
         </div>
       </div>
     </section>
