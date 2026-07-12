@@ -1,10 +1,18 @@
 'use client';
 
-import { Github, Linkedin, Mail, FileText, ArrowRight, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ArrowRight, Phone, Copy, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import ContactForm from "./ContactForm";
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("manimeets09@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   const contacts = [
     {
       label: "Email",
@@ -55,6 +63,28 @@ export default function Contact() {
           <p className="text-secondary text-lg max-w-2xl mx-auto">
             I&apos;m always open to discussing new projects, internship opportunities, or having a chat about AI, engineering, and technology.
           </p>
+          <motion.button
+            onClick={copyEmail}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border transition-all duration-300 text-sm font-medium ${
+              copied
+                ? 'bg-green-400/20 border-green-400/50 text-green-300'
+                : 'bg-cyan-400/20 border-cyan-400/50 text-cyan-300 hover:bg-cyan-400/30'
+            }`}
+          >
+            {copied ? (
+              <>
+                <Check size={16} />
+                Email Copied!
+              </>
+            ) : (
+              <>
+                <Copy size={16} />
+                Copy Email
+              </>
+            )}
+          </motion.button>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">

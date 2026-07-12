@@ -4,6 +4,7 @@ import { ExternalLink, Github, ArrowRight, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React from "react";
+import TechTag from "./TechTag";
 
 interface ProjectProps {
   title: string;
@@ -19,23 +20,41 @@ interface ProjectProps {
 }
 
 function ProjectCard({ title, date, description, technologies, highlights, links, badge }: ProjectProps) {
+  const getProjectInitial = () => title.charAt(0).toUpperCase();
+  const getTechCategory = (tech: string): 'language' | 'framework' | 'tool' | 'embedded' => {
+    const languages = ['Python', 'JavaScript', 'TypeScript', 'Java', 'C++', 'Rust'];
+    const frameworks = ['React', 'Next.js', 'Django', 'FastAPI', 'Vue'];
+    const embedded = ['ESP32', 'Arduino', 'Embedded ML', 'TinyML'];
+    
+    if (languages.includes(tech)) return 'language';
+    if (frameworks.includes(tech)) return 'framework';
+    if (embedded.some(e => tech.includes(e))) return 'embedded';
+    return 'tool';
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-xl p-6 md:p-8 hover:border-cyan-300/70 transition-all duration-300 overflow-hidden hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl">
+      className="group relative bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-xl overflow-hidden hover:border-cyan-300/70 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/30 backdrop-blur-xl">
       {/* Hover gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
       
-      <div className="relative space-y-4">
-        <div className="flex justify-between items-start gap-4">
-          <div className="space-y-2 flex-1">
-            <div className="flex items-center gap-3">
+      <div className="relative grid md:grid-cols-3 gap-6">
+        {/* Thumbnail */}
+        <div className="w-full h-40 md:h-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-6xl font-bold text-background/80 group-hover:-translate-y-1 transition-transform duration-300">
+          {getProjectInitial()}
+        </div>
+
+        {/* Content */}
+        <div className="md:col-span-2 p-6 md:p-8 space-y-4">
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 flex-wrap">
               <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-cyan-300 transition-colors">{title}</h3>
               {badge && (
-                <span className="inline-flex items-center gap-1 px-2 py-1 bg-amber-400/20 border border-amber-400/50 rounded-full text-amber-300 text-xs font-semibold">
+                <span className="inline-flex items-center gap-1 px-2 py-1 bg-amber-400/20 border border-amber-400/50 rounded-full text-amber-300 text-xs font-semibold whitespace-nowrap">
                   <Trophy size={14} />
                   {badge}
                 </span>
@@ -43,37 +62,31 @@ function ProjectCard({ title, date, description, technologies, highlights, links
             </div>
             <p className="text-cyan-300/70 text-sm font-medium">{date}</p>
           </div>
-        </div>
 
-        <p className="text-secondary leading-relaxed">{description}</p>
+          <p className="text-secondary leading-relaxed text-sm md:text-base">{description}</p>
 
-        {/* Highlights */}
-        <div className="space-y-2">
-          {highlights.slice(0, 3).map((highlight, idx) => (
-            <div key={idx} className="flex gap-3 text-secondary text-sm">
-              <span className="text-cyan-400 flex-shrink-0 mt-0.5">→</span>
-              <span>{highlight}</span>
-            </div>
-          ))}
-          {highlights.length > 3 && (
-            <p className="text-secondary text-sm italic">+ {highlights.length - 3} more highlights</p>
-          )}
-        </div>
+          {/* Highlights */}
+          <div className="space-y-2">
+            {highlights.slice(0, 3).map((highlight, idx) => (
+              <div key={idx} className="flex gap-3 text-secondary text-xs md:text-sm">
+                <span className="text-cyan-400 flex-shrink-0 mt-0.5">→</span>
+                <span>{highlight}</span>
+              </div>
+            ))}
+            {highlights.length > 3 && (
+              <p className="text-secondary text-xs md:text-sm italic">+ {highlights.length - 3} more highlights</p>
+            )}
+          </div>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 pt-2">
-          {technologies.slice(0, 5).map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 bg-cyan-400/20 text-cyan-300 text-xs rounded-full border border-cyan-400/50 hover:bg-cyan-400/30 hover:border-cyan-300/70 transition-colors"
-            >
-              {tech}
-            </span>
-          ))}
-          {technologies.length > 5 && (
-            <span className="px-3 py-1 text-secondary text-xs">+{technologies.length - 5} more</span>
-          )}
-        </div>
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2 pt-2">
+            {technologies.slice(0, 6).map((tech) => (
+              <TechTag key={tech} label={tech} category={getTechCategory(tech)} />
+            ))}
+            {technologies.length > 6 && (
+              <span className="px-3 py-1 text-secondary text-xs">+{technologies.length - 6} more</span>
+            )}
+          </div>
 
         {/* Links */}
         {links && (

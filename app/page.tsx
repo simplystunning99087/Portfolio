@@ -1,13 +1,13 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import StatsCounter from "@/components/StatsCounter";
-import About from "@/components/About";
+import AboutSection from "@/components/AboutSection";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import FooterComponent from "@/components/FooterComponent";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
         <StatsCounter />
       </section>
       <section id="about">
-        <About />
+        <AboutSection />
       </section>
       <section id="projects">
         <Projects />
@@ -37,7 +37,7 @@ export default function Home() {
       <section id="contact">
         <Contact />
       </section>
-      <Footer />
+      <FooterComponent />
     </main>
   );
 }
