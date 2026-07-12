@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Hero() {
   const { ref } = useInView({ threshold: 0.3 });
@@ -48,9 +49,12 @@ export default function Hero() {
           {/* Left Column - Content */}
           <motion.div className="space-y-8" variants={containerVariants}>
             {/* Badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-400/50 backdrop-blur-sm w-fit hover:bg-cyan-500/30 hover:border-cyan-300/70 transition-all duration-300">
-              <Sparkles size={16} className="text-cyan-300 neon-text" />
-              <span className="text-sm font-medium text-cyan-200">Available for Internships</span>
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-cyan-500/20 border border-cyan-400/50 backdrop-blur-sm w-fit hover:bg-cyan-500/30 hover:border-cyan-300/70 transition-all duration-300 pulse-glow">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-400"></span>
+              </span>
+              <span className="text-sm font-medium text-cyan-200">Open to Internships</span>
             </motion.div>
 
             {/* Name & Title */}
@@ -58,9 +62,22 @@ export default function Hero() {
               <h1 className="text-5xl md:text-6xl font-bold text-balance leading-tight">
                 Manivel <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 animate-pulse">Mughilan</span>
               </h1>
-              <p className="text-xl md:text-2xl text-secondary font-light">
-                AI/ML Engineer & Full-Stack Developer
-              </p>
+              <div className="text-xl md:text-2xl text-secondary font-light min-h-[2em]">
+                <TypeAnimation
+                  sequence={[
+                    'AI/ML Engineer',
+                    1500,
+                    'AI/ML Engineer & Full-Stack Developer',
+                    1500,
+                    'AI/ML Engineer & Full-Stack Developer & Embedded Enthusiast',
+                    2000,
+                  ]}
+                  wrapper="span"
+                  cursor={true}
+                  repeat={Infinity}
+                  speed={50}
+                />
+              </div>
             </motion.div>
 
             {/* Bio */}
@@ -86,14 +103,14 @@ export default function Hero() {
                 href="#projects"
                 className="group px-6 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
               >
-                View My Work
+                View Projects
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#contact"
                 className="group px-6 py-3 border border-cyan-400/50 text-cyan-300 font-semibold rounded-lg hover:bg-cyan-400/10 hover:border-cyan-300/80 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-300 backdrop-blur-sm"
               >
-                Get in Touch
+                Contact Me
               </a>
             </motion.div>
 

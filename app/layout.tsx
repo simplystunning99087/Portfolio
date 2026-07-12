@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Manivel Mughilan | AI/ML Engineer & Full-Stack Developer",
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
     title: "Manivel Mughilan | AI/ML Engineer & Full-Stack Developer",
     description: "Building end-to-end AI systems from data capture to hardware deployment",
     type: "website",
+    url: "https://portfolio-p9.vercel.app",
+    image: "https://portfolio-p9.vercel.app/og-image.png",
   },
+  authors: [{ name: "Manivel Mughilan" }],
 };
 
 export default function RootLayout({
@@ -18,13 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#0f0f14" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className="bg-background text-foreground">
-        {children}
+      <body className="bg-background text-foreground transition-colors duration-300">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
